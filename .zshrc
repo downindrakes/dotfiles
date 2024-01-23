@@ -84,6 +84,8 @@ plugins=(git
 	colorize
 	command-not-found
 	dirhistory
+	ssh-agent
+	zsh-syntax-highlighting
 	)
 
 
@@ -119,11 +121,14 @@ alias vpnip="ip a s | grep tun0"
 alias pythonserver="python3 -m http.server"
 alias smbon="sudo systemctl start smbd"
 alias smboff="sudo systemctl stop smbd"
+alias la="eza -la --icons"
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias s='kitten ssh'
 
 export MCFLY_KEY_SCHEME=vim
+export MCFLY_RESULTS_SORT=LAST_RUN
 eval "$(mcfly init zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export MCFLY_KEY_SCHEME=vim
-export MCFLY_RESULTS_SORT=LAST_RUN
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+source ~/.p10k.zsh
+
+zstyle :omz:plugins:ssh-agent identities galactus
